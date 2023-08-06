@@ -1,0 +1,203 @@
+// Bài 1:
+function findCommonAndDiffirant(arr1, arr2) {
+    console.log('arr1: '+ arr1);
+    console.log('arr2: '+ arr2);
+    var common = [],
+      diffirant = [];
+    var result = {};
+    //hàm loại bỏ phần tử trùng lặp
+    function uniqueElements(arr) {
+      return arr.filter((value, index) => arr.indexOf(value) === index);
+    }
+    //biến khoảng các dấu cách thành 1 dấu cách ở mảng 1
+    for (let i = 0; i < arr1.length; i++) {
+      if (typeof arr1[i] === "string") {
+        if (arr1[i].trim() == "") {
+          arr1[i] = " ";
+        }
+      }
+    }
+    //biến khoảng các dấu cách thành 1 dấu cách ở mảng 2
+    for (let i = 0; i < arr2.length; i++) {
+      if (typeof arr2[i] === "string") {
+        if (arr2[i].trim() == "") {
+          arr2[i] = " ";
+        }
+      }
+    }
+    //duyệt 2 mảng 1 và 2
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        //cho phần tử giống nhau vào mảng common
+        if (arr1[i] === arr2[j]) {
+          common.push(arr1[i]);
+          break;
+        } else {
+          //cho phần tử khác nhau vào mảng diffirent
+          diffirant.push(arr1[i]);
+        }
+      }
+    }
+    //duyệt mảng 2 và mảng diffirent
+    for (let i = 0; i < arr2.length; i++) {
+      for (let j = 0; j < diffirant.length; j++) {
+        //tìm phần tử trong mảng 2 mà trong mảng diff không có thì thêm vào mảng diff
+        if (arr2[i] !== diffirant[j]) {
+          diffirant.push(arr2[i]);
+          break;
+        }
+      }
+    }
+    //loại phẩn từ trùng trong mảng diff
+    diffirant = uniqueElements(diffirant);
+    result["common"] = common;
+    //duyệt mảng giống và khác
+    for (let i = 0; i < common.length; i++) {
+      for (let j = 0; j < diffirant.length; j++) {
+        //phần tử nào tồn tại trong mảng common thì xóa khỏi mảng diff
+        if (common[i] === diffirant[j]) {
+          diffirant = diffirant.filter((element) => element !== common[i]);
+        }
+      }
+    }
+    result["diffirant"] = diffirant;
+    return JSON.stringify(result);
+  }
+  // Ví dụ
+  console.log(
+    findCommonAndDiffirant(
+      ["   ", 1, " adh    fkh    ", , "door"],
+      [1, 2, "1", "           ", "door", , 2]
+    )
+  );
+//   Bài 2:
+function capitalizeText(text) {
+    var arr = [];
+    var x = text.split(" ");
+
+    for (var i = 0; i < x.length; i++) {
+      if (x[i] !== " ") {
+        x[i] = x[i].charAt(0).toUpperCase() + x[i].slice(1);
+        arr.push(x[i]);
+      }
+    }
+    arr = arr.join(" ").trim();
+    return { result: arr };
+  }
+// Ví dụ
+  console.log(JSON.stringify(capitalizeText("   ah ah đầkh asfkha ma à")));
+  console.log(
+    JSON.stringify(
+      capitalizeText("      tên               tôi là          ")
+    )
+  );
+//  Bài 3:
+function tongLeHayChan(arr) {
+    var tongA = 0;
+    for (var i = 0; i < arr.length; i++) {
+      tongA = tongA + arr[i];
+    }
+    if (tongA % 2 === 1) {
+      return { result: "odd" };
+    } else {
+      return { result: "even" };
+    }
+  }
+
+  var result = tongLeHayChan([1, 2, -3, 4, 5]);
+  //   var result = tongLeHayChan([]);
+  // Ví dụ
+  console.log(JSON.stringify(result));
+  //Bài 4:
+  function lots_of_math(a, b, c, d) {
+    var a, b, c, d;
+    var result = {};
+    result["first"] = a + b;
+    result["second"] = c - d;
+    var third = (a + b) * (c - d);
+    result["third"] = third;
+    if (a === 0) {
+      return "undefined";
+    } else {
+      result['result'] = (third % a);
+    }
+    return JSON.stringify(result);
+  }
+  // Ví dụ
+  console.log(lots_of_math(4, 2, 1.5, -1.5));
+  //bài 5:
+  function getMiddle(word) {
+    // Cắt các dấu cách đầu cuối của từ đã cho
+    const trimmedWord = word.trim();
+
+    // Tính độ dài của từ đã cắt
+    const length = trimmedWord.length;
+
+    // Cắt xong. Nếu độ dài của từ là lẻ, trả về ký tự ở giữa
+    // Ngược lại, lấy 2 ký tự ở giữa
+    if (length % 2 === 1) {
+      return {result: trimmedWord.charAt(Math.floor(length / 2))};
+    } else {
+      return {result : trimmedWord.substr(length / 2 - 1, 2)};
+    }
+  }
+
+  // Ví dụ
+  console.log(getMiddle("      test    "));
+  console.log(getMiddle("      testing"));
+  console.log(getMiddle("middle       ")); 
+  console.log(getMiddle("A"));
+  //Bài : 6
+  function sapXepSoLonNhat(so) {
+    //Chuyển đổi số nguyên thành mảng các chữ số
+    let mangChuSo = String(so).split("").map(Number);
+    //Sắp xếp mảng các chữ số theo thứ tự giảm dần
+    mangChuSo.sort((a, b) => b - a);
+    //Chuyển đổi lại mảng các chữ số thành một số nguyên
+    let soLonNhat = parseInt(mangChuSo.join(""), 10);
+    //JSON:
+    return { result: soLonNhat };
+  }
+  // Ví dụ
+  console.log(sapXepSoLonNhat(42145));
+  console.log(sapXepSoLonNhat(145263));
+  console.log(sapXepSoLonNhat(123456789));
+  //Bài 7:
+  function unique_in_order(iterable) {
+    var result = []; // Mảng rỗng sẽ chứa kết quả cuối cùng
+    for (var i = 0; i < iterable.length; i++) {
+      // Duyệt qua từng phần tử trong iterable
+      if (iterable[i] !== result[result.length - 1]) {
+        // Kiểm tra nếu phần tử hiện tại không giống với phần tử cuối cùng trong mảng result
+        // Nếu không giống nhau, tức là phần tử này là duy nhất, thêm nó vào mảng result
+        result.push(iterable[i]);
+      }
+    }
+    //JSON:
+    return {result : result};
+    //bài 8:
+    function findOutlier(arr) {
+        var oddCount = 0;
+        var evenCount = 0;
+        //Duyệt mảng để đếm số chẵn lẻ trong mảng
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 0) {
+            evenCount++;
+          } else {
+            oddCount++;
+          }
+        }
+        // Kiểm tra xem đếm số lẻ hay chẵn bằng 1 và trả về phần tử tương ứng
+        if (oddCount === 1) {
+          return { result: arr.find((num) => num % 2 !== 0) }; // Trả về giá trị chẵn
+        } else {
+          return { result: arr.find((num) => num % 2 === 0) }; // Trả về giá trị lẻ
+        }
+      }
+      // Ví dụ
+      const arr1 = [2, 4, 0, 100, 4, 11, 2602, 36];
+      console.log(findOutlier(arr1));
+      const arr2 = [160, 3, 1719, 19, 11, 13, -21];
+      console.log(findOutlier(arr2));
+  }
+  

@@ -14,9 +14,7 @@
         mangChuSo.sort((a, b) => b - a);
         //Chuyển đổi lại mảng các chữ số thành một số nguyên
         let soLonNhat = parseInt(mangChuSo.join(""), 10);
-        // return soLonNhat;
-        //JSON:
-        return { result: soLonNhat };
+        return soLonNhat;
       }
       // Ví dụ
       console.log(sapXepSoLonNhat(42145));

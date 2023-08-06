@@ -7,41 +7,24 @@
   </head>
   <body>
     <script>
-      /*
-        //Hàm tìm tổng lẻ hay chẵn
-        function tongLeHayChan(arr) {
-            var tongA = 0;
-            //Tính tổng danh sách số nguyên
-            for (var i = 0; i < arr.length; i++) {
-                tongA = tongA + arr[i];
-            }
-            //nếu tổng không chia hết 2 thì trả về lẻ "odd"
-            if (tongA % 2 == 1) {
-                return "odd";
-            } 
-            //ngược lại trả về chẵn "even"
-            else {
-                return "even";
-            }
-            }
-            console.log(tongLeHayChan([1,2,-3,4]));
-            */
+      //Hàm tìm tổng lẻ hay chẵn
       function tongLeHayChan(arr) {
         var tongA = 0;
+        //Tính tổng danh sách số nguyên
         for (var i = 0; i < arr.length; i++) {
           tongA = tongA + arr[i];
         }
-        if (tongA % 2 === 1) {
-          return { result: "odd" };
-        } else {
-          return { result: "even" };
+        //nếu tổng không chia hết 2 thì trả về lẻ "odd"
+        if (tongA % 2 == 1) {
+          return "odd";
+        }
+        //ngược lại trả về chẵn "even"
+        else {
+          return "even";
         }
       }
-
-      var result = tongLeHayChan([1, 2, -3, 4, 5]);
-      //   var result = tongLeHayChan([]);
-      // Ví dụ
-      console.log(JSON.stringify(result));
+      //Ví dụ
+      console.log(tongLeHayChan([1, 2, -3, 4]));
     </script>
   </body>
 </html>

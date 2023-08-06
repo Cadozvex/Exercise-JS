@@ -19,16 +19,10 @@
           }
         }
         // Kiểm tra xem đếm số lẻ hay chẵn bằng 1 và trả về phần tử tương ứng
-        // if (oddCount === 1) {
-        //   return arr.find((num) => num % 2 !== 0); // Trả về giá trị chẵn
-        // } else {
-        //   return arr.find((num) => num % 2 === 0); // Trả về giá trị lẻ
-        // }
-        //JSON:
         if (oddCount === 1) {
-          return { result: arr.find((num) => num % 2 !== 0) }; // Trả về giá trị chẵn
+          return arr.find((num) => num % 2 !== 0); // Trả về giá trị chẵn
         } else {
-          return { result: arr.find((num) => num % 2 === 0) }; // Trả về giá trị lẻ
+          return arr.find((num) => num % 2 === 0); // Trả về giá trị lẻ
         }
       }
       // Ví dụ
