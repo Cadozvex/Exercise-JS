@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 3</title>
+  </head>
+  <body>
+    <script>
+      /*
+        //Hàm tìm tổng lẻ hay chẵn
+        function tongLeHayChan(arr) {
+            var tongA = 0;
+            //Tính tổng danh sách số nguyên
+            for (var i = 0; i < arr.length; i++) {
+                tongA = tongA + arr[i];
+            }
+            //nếu tổng không chia hết 2 thì trả về lẻ "odd"
+            if (tongA % 2 == 1) {
+                return "odd";
+            } 
+            //ngược lại trả về chẵn "even"
+            else {
+                return "even";
+            }
+            }
+            console.log(tongLeHayChan([1,2,-3,4]));
+            */
+      function tongLeHayChan(arr) {
+        var tongA = 0;
+        for (var i = 0; i < arr.length; i++) {
+          tongA = tongA + arr[i];
+        }
+        if (tongA % 2 === 1) {
+          return { result: "odd" };
+        } else {
+          return { result: "even" };
+        }
+      }
+
+      var result = tongLeHayChan([1, 2, -3, 4, 5]);
+      //   var result = tongLeHayChan([]);
+      // Ví dụ
+      console.log(JSON.stringify(result));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 7</title>
+  </head>
+  <body>
+    <script>
+      function unique_in_order(iterable) {
+        var result = []; // Mảng rỗng sẽ chứa kết quả cuối cùng
+        for (var i = 0; i < iterable.length; i++) {
+          // Duyệt qua từng phần tử trong iterable
+          if (iterable[i] !== result[result.length - 1]) {
+            // Kiểm tra nếu phần tử hiện tại không giống với phần tử cuối cùng trong mảng result
+            // Nếu không giống nhau, tức là phần tử này là duy nhất, thêm nó vào mảng result
+            result.push(iterable[i]);
+          }
+        }
+        //return result;
+        //JSON:
+        return {result : result};
+      }
+
+      // Ví dụ
+      console.log(unique_in_order("AAAABBBCCDAABBB"));
+      console.log(unique_in_order("ABBCcADddddd"));
+      console.log(unique_in_order([1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 6, 6, 7]));
+    </script>
+  </body>
+</html>

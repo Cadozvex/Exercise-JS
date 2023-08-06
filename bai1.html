@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 1</title>
+  </head>
+  <body>
+    <script>//Hàm tìm giá trị giống và khác
+      function findCommonAndDiffirant(arr1, arr2) {
+        console.log('arr1: '+ arr1);
+        console.log('arr2: '+ arr2);
+        var common = [],
+          diffirant = [];
+        var result = {};
+        //hàm loại bỏ phần tử trùng lặp
+        function uniqueElements(arr) {
+          return arr.filter((value, index) => arr.indexOf(value) === index);
+        }
+        //biến khoảng các dấu cách thành 1 dấu cách ở mảng 1
+        for (let i = 0; i < arr1.length; i++) {
+          if (typeof arr1[i] === "string") {
+            if (arr1[i].trim() == "") {
+              arr1[i] = " ";
+            }
+          }
+        }
+        //biến khoảng các dấu cách thành 1 dấu cách ở mảng 2
+        for (let i = 0; i < arr2.length; i++) {
+          if (typeof arr2[i] === "string") {
+            if (arr2[i].trim() == "") {
+              arr2[i] = " ";
+            }
+          }
+        }
+        //duyệt 2 mảng 1 và 2
+        for (let i = 0; i < arr1.length; i++) {
+          for (let j = 0; j < arr2.length; j++) {
+            //cho phần tử giống nhau vào mảng common
+            if (arr1[i] === arr2[j]) {
+              common.push(arr1[i]);
+              break;
+            } else {
+              //cho phần tử khác nhau vào mảng diffirent
+              diffirant.push(arr1[i]);
+            }
+          }
+        }
+        //duyệt mảng 2 và mảng diffirent
+        for (let i = 0; i < arr2.length; i++) {
+          for (let j = 0; j < diffirant.length; j++) {
+            //tìm phần tử trong mảng 2 mà trong mảng diff không có thì thêm vào mảng diff
+            if (arr2[i] !== diffirant[j]) {
+              diffirant.push(arr2[i]);
+              break;
+            }
+          }
+        }
+        //loại phẩn từ trùng trong mảng diff
+        diffirant = uniqueElements(diffirant);
+        result["common"] = common;
+        //duyệt mảng giống và khác
+        for (let i = 0; i < common.length; i++) {
+          for (let j = 0; j < diffirant.length; j++) {
+            //phần tử nào tồn tại trong mảng common thì xóa khỏi mảng diff
+            if (common[i] === diffirant[j]) {
+              diffirant = diffirant.filter((element) => element !== common[i]);
+            }
+          }
+        }
+        result["diffirant"] = diffirant;
+        return JSON.stringify(result);
+      }
+      // Ví dụ
+      console.log(
+        findCommonAndDiffirant(
+          ["   ", 1, " adh    fkh    ", , "door"],
+          [1, 2, "1", "           ", "door", , 2]
+        )
+      );
+      </script>
+  </body>
+</html>

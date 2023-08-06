@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2</title>
+  </head>
+  <body>
+    <script>
+      /*
+        //Hàm viết hoa chữ cái đầu
+        function capitalizeText(text) {
+        var arr = [];
+        var x = text.split(" ");
+        //cắt chuỗi ra mảng và viết hoa chữ cái đầu tiên rồi nối với các chữ phía sau của từ đó
+        for (var i = 0; i < x.length; i++) {
+            if (x[i] !== " ") {
+            x[i] = x[i].charAt(0).toUpperCase() + x[i].slice(1);
+            arr.push(x[i]);
+            }
+        }
+        //nối mảng lại và cắt các dấu cách thừa
+        arr = arr.join(" ").trim();
+        return arr;
+        }
+        console.log(capitalizeText("   ah ah đầkh asfkha ma à"));
+        console.log(capitalizeText("      tên               tôi là          "));
+        */
+      //trả về định dạng JSON
+      function capitalizeText(text) {
+        var arr = [];
+        var x = text.split(" ");
+
+        for (var i = 0; i < x.length; i++) {
+          if (x[i] !== " ") {
+            x[i] = x[i].charAt(0).toUpperCase() + x[i].slice(1);
+            arr.push(x[i]);
+          }
+        }
+        arr = arr.join(" ").trim();
+        return { result: arr };
+      }
+    // Ví dụ
+      console.log(JSON.stringify(capitalizeText("   ah ah đầkh asfkha ma à")));
+      console.log(
+        JSON.stringify(
+          capitalizeText("      tên               tôi là          ")
+        )
+      );
+    </script>
+  </body>
+</html>

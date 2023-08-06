@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 9</title>
+  </head>
+  <body>
+    <script>
+      function countCharacter(arr) {
+        arr = arr.split("");
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+          var dem = 1;
+          for (var j = i + 1; j < arr.length; j++) {
+            if (arr[i] == arr[j]) {
+              dem++;
+              arr.splice(j, 1);
+              j--; // Giảm j để xét lại phần tử mới sau khi xóa
+            }
+          }
+          newArr.push("'" + arr[i] + "':" + dem);
+        }
+        return "{" + newArr + "}";
+      }
+      //Ví dụ
+      console.log(countCharacter("aba"));
+      console.log(countCharacter("Hello world!"));
+      console.log(
+        countCharacter(
+          "Xin chào các bạn. Chào mừng các bạn đã đến với không là Cái Gì"
+        )
+      );
+    </script>
+  </body>
+</html>

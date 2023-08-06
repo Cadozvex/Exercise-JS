@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 8</title>
+  </head>
+  <body>
+    <script>
+      function findOutlier(arr) {
+        var oddCount = 0;
+        var evenCount = 0;
+        //Duyệt mảng để đếm số chẵn lẻ trong mảng
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 0) {
+            evenCount++;
+          } else {
+            oddCount++;
+          }
+        }
+        // Kiểm tra xem đếm số lẻ hay chẵn bằng 1 và trả về phần tử tương ứng
+        // if (oddCount === 1) {
+        //   return arr.find((num) => num % 2 !== 0); // Trả về giá trị chẵn
+        // } else {
+        //   return arr.find((num) => num % 2 === 0); // Trả về giá trị lẻ
+        // }
+        //JSON:
+        if (oddCount === 1) {
+          return { result: arr.find((num) => num % 2 !== 0) }; // Trả về giá trị chẵn
+        } else {
+          return { result: arr.find((num) => num % 2 === 0) }; // Trả về giá trị lẻ
+        }
+      }
+      // Ví dụ
+      const arr1 = [2, 4, 0, 100, 4, 11, 2602, 36];
+      console.log(findOutlier(arr1));
+      const arr2 = [160, 3, 1719, 19, 11, 13, -21];
+      console.log(findOutlier(arr2));
+    </script>
+  </body>
+</html>
