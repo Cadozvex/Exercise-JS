@@ -1,24 +1,25 @@
 //Function to find distinct values
-function findDistinctValues(arr) {
-  var oddCount = 0;
-  var evenCount = 0;
+//chưa tối ưu
+const findDistinctValues = (arr) => {
   //Iterate through the array to count the number of even and odd values
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      evenCount++;
+  for (var i = 0; i < arr.length - 1; i++) {
+    if (arr[i] % 2 !== arr[i + 1] % 2) {
+      if (arr[i] % 2 !== arr[i + 2] % 2) {
+        return arr[i];
+      } else {
+        return arr[i + 1];
+      }
     } else {
-      oddCount++;
+      if (arr[i] % 2 !== arr[i + 2] % 2) {
+        return arr[i + 2];
+      } else {
+        continue;
+      }
     }
   }
-  // Check if the count of odd or even numbers is 1 and return the corresponding element
-  if (oddCount === 1) {
-    return arr.find((num) => num % 2 !== 0); // Return the even value
-  } else {
-    return arr.find((num) => num % 2 === 0); // Return the odd value
-  }
-}
+};
 // Test
-const arr1 = [2, 4, 0, 100, 4, 11, 2602, 36];
+const arr1 = [2, 4, 0, 100, 4, 2602, 36, 12, 112, 14, 11];
 console.log(findDistinctValues(arr1));
 const arr2 = [160, 3, 1719, 19, 11, 13, -21];
 console.log(findDistinctValues(arr2));

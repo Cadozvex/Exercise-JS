@@ -1,5 +1,5 @@
 //Function that returns an array of non-repeated values when adjacent
-function uniqueInOrder(iterable) {
+const uniqueInOrder = (iterable) => {
   var result = []; // The empty array will contain the final result
   for (var i = 0; i < iterable.length; i++) {
     // Iterate through each element in the iterable
@@ -13,6 +13,8 @@ function uniqueInOrder(iterable) {
 }
 
 // Test
+console.log(uniqueInOrder("AAAABBB   CC        DAABBB"));
 console.log(uniqueInOrder("AAAABBBCCDAABBB"));
 console.log(uniqueInOrder("ABBCcADddddd"));
 console.log(uniqueInOrder([1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 6, 6, 7]));
+ 
