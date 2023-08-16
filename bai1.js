@@ -35,26 +35,12 @@ const findCommon = (arr1, arr2) => {
 //Function find different
 const findDifferent = (arr1, arr2) => {
   var arrCommon = findCommon(arr1, arr2),
-    different = [];
-  for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr2.length; j++) {
-      //Find and push distinct elements into the 'different' array
-      if (arr1[i] === arr2[j]) {
-        continue;
-      } else {
-        different.push(arr1[i]);
-        different.push(arr2[j]);
-      }
-    }
-  }
+    different = [...arr1, ...arr2];
+
   different = uniqueElements(different);
   for (let i = 0; i < arrCommon.length; i++) {
-    for (let j = 0; j < different.length; j++) {
-      //Remove elements that exist in the 'arrCommon' array from the 'different' array
-      if (arrCommon[i] === different[j]) {
-        different = different.filter((element) => element !== arrCommon[i]);
-      }
-    }
+    //Remove elements that exist in the 'arrCommon' array from the 'different' array
+    different = different.filter((element) => element !== arrCommon[i]);
   }
   return different.sort();
 };
